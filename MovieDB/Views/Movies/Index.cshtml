@@ -1,0 +1,68 @@
+﻿@model TmdbClient.MovieResponse
+@{
+    ViewData["Title"] = "Now Playing Movies";
+}
+
+<div class="container py-4">
+    <h1 class="text-center mb-4">Now Playing Movies</h1>
+
+    @if (Model == null)
+    {
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (Model.Results != null && Model.Results.Any())
+    {
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            @foreach (var movie in Model.Results)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        @if (!string.IsNullOrEmpty(movie.PosterPath))
+                        {
+                            <img src="@($"https://image.tmdb.org/t/p/w500{movie.PosterPath}")"
+                                 class="card-img-top"
+                                 alt="@movie.Title"
+                                 style="height: 400px; object-fit: cover;">
+                        }
+                        else
+                        {
+                            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 400px;">
+                                <span class="text-muted">No poster available</span>
+                            </div>
+                        }
+
+                        <div class="card-body">
+                            <h5 class="card-title">@movie.Title</h5>
+                            <div class="mb-2">
+                                <span class="badge bg-primary">
+                                    @DateTime.Parse(movie.ReleaseDate).ToString("MMM dd, yyyy")
+                                </span>
+                                <span class="badge bg-warning text-dark">
+                                    ⭐ @movie.VoteAverage.ToString("0.0")
+                                </span>
+                            </div>
+                            <p class="card-text text-muted" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                @movie.Overview
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0 text-center">
+                            <a href="@Url.Action("Details", new { id = movie.Id })" class="btn btn-primary w-100">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            No movies found.
+        </div>
+    }
+</div>
