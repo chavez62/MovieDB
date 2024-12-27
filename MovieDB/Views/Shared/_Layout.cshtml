@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -51,9 +51,68 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer bg-dark text-light py-5 mt-5">
         <div class="container">
-            &copy; 2024 - Movie Database
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-12 col-md-4 mb-4">
+                    <h5 class="mb-3">🎬 Movie Database</h5>
+                    <p class="text-muted">
+                        Your ultimate destination for discovering movies, checking what's playing, and staying updated with the latest releases.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-6 col-md-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a class="text-muted text-decoration-none" asp-controller="Movies" asp-action="Index">Now Playing</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="text-muted text-decoration-none" asp-controller="Movies" asp-action="Popular">Popular Movies</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="text-muted text-decoration-none" asp-controller="Movies" asp-action="Upcoming">Upcoming Releases</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Powered By Section -->
+                <div class="col-6 col-md-4 mb-4">
+                    <h5 class="mb-3">Powered By</h5>
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
+                             alt="TMDB Logo"
+                             style="height: 40px;"
+                             class="me-2">
+                    </div>
+                    <p class="text-muted small">
+                        This product uses the TMDB API but is not endorsed or certified by TMDB.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Copyright Bar -->
+            <div class="row mt-4 pt-4 border-top border-secondary">
+                <div class="col-12 text-center text-muted">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                        <span>
+                            &copy; @DateTime.Now.Year Movie Database. All rights reserved. Created by
+                            <a href="https://www.linkedin.com/in/louis-chavez87"
+                               class="text-muted text-decoration-none"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                Louis Chavez
+                            </a>
+                        </span>
+                        <div>
+                            <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+                            <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
