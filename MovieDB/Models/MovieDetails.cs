@@ -2,7 +2,7 @@
 
 namespace MovieDB.Models
 {
-    public class MovieDetails : TmdbClient.Movie
+    public class MovieDetails : Movie
     {
         [JsonPropertyName("genres")]
         public List<Genre> Genres { get; set; }

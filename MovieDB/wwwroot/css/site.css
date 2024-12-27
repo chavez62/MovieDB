@@ -1,28 +1,86 @@
+:root {
+    --background: #2c3440; /* Deep navy */
+    --primary: #c69749; /* Golden accent */
+    --secondary: #465975; /* Steel blue */
+    --accent: #e85d75; /* Rose pink */
+    --rating: #ffd700; /* Classic gold */
+    --text-light: #ffffff;
+    --text-muted: #a0aec0;
+    --card-bg: #343d4a;
+}
+
+body {
+    background: var(--background);
+    color: var(--text-light);
+}
+
+/* Navbar styling */
+.navbar {
+    background: var(--card-bg) !important;
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+    .nav-link:hover {
+        color: var(--accent) !important;
+    }
+
+/* Button styling */
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--text-light);
+}
+
+    .btn-primary:hover {
+        background-color: var(--accent);
+        border-color: var(--accent);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+/* Card styling */
 .card {
+    background: var(--light-gray);
+    border: none;
+    border-radius: 15px;
     transition: transform 0.2s;
 }
 
     .card:hover {
-        transform: scale(1.02);
+        transform: scale(1.03);
+        box-shadow: 0 10px 20px rgba(91, 107, 183, 0.3);
     }
 
-    .card a:hover {
-        text-decoration: none;
-    }
-
-html {
-    position: relative;
-    min-height: 100%;
+.card-title {
+    color: var(--text-light) !important;
 }
 
-body {
-    margin-bottom: 60px;
+.text-muted {
+    color: var(--text-muted) !important;
 }
 
+/* Badge styling */
+.badge.rating {
+    background-color: var(--rating) !important;
+    color: var(--background);
+    font-weight: bold;
+}
+
+.badge.genre {
+    background-color: var(--secondary) !important;
+    color: var(--text-light);
+}
+
+/* Footer styling */
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 60px;
+    color: white !important;
+}
+
+/* Search button */
+.btn-outline-light:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
 }

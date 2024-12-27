@@ -37,5 +37,18 @@ namespace MovieDB.Controllers
                 return View("Error", ex.Message);
             }
         }
+
+        public async Task<IActionResult> Popular(int page = 1)
+        {
+            try
+            {
+                var movies = await _tmdbClient.GetPopularMoviesAsync(page: page);
+                return View(movies);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", ex.Message);
+            }
+        }
     }
 }

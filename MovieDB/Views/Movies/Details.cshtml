@@ -1,4 +1,4 @@
-﻿@model MovieDetails
+﻿@model MovieDB.Models.MovieDetails
 @{
     ViewData["Title"] = Model.Title;
 }
@@ -10,78 +10,82 @@
             {
                 <img src="@($"https://image.tmdb.org/t/p/w500{Model.PosterPath}")"
                      alt="@Model.Title"
-                     class="img-fluid rounded shadow">
+                     class="img-fluid rounded shadow-lg">
             }
             else
             {
-                <div class="bg-light rounded d-flex align-items-center justify-content-center" style="height: 600px;">
-                    <span class="text-muted">No poster available</span>
+                <div class="bg-dark rounded d-flex align-items-center justify-content-center" style="height: 600px;">
+                    <span class="text-light">No poster available</span>
                 </div>
             }
         </div>
 
         <div class="col-md-8">
-            <h1 class="mb-2">@Model.Title</h1>
+            <div class="card bg-white p-4 rounded-4 shadow-lg">
+                <h1 class="mb-2" style="color: var(--dark-blue);">@Model.Title</h1>
 
-            @if (!string.IsNullOrEmpty(Model.Tagline))
-            {
-                <p class="lead fst-italic text-muted mb-4">@Model.Tagline</p>
-            }
-
-            <div class="mb-3">
-                @foreach (var genre in Model.Genres)
+                @if (!string.IsNullOrEmpty(Model.Tagline))
                 {
-                    <span class="badge bg-primary me-2">@genre.Name</span>
+                    <p class="lead fst-italic mb-4" style="color: var(--medium-blue);">@Model.Tagline</p>
                 }
-            </div>
 
-            <div class="row mb-4">
-                <div class="col-sm-3">
-                    <p class="text-muted mb-0">Rating</p>
-                    <p class="fw-bold">⭐ @Model.VoteAverage.ToString("0.0")</p>
+                <div class="mb-3">
+                    @foreach (var genre in Model.Genres)
+                    {
+                        <span class="badge me-2" style="background-color: var(--turquoise);">@genre.Name</span>
+                    }
                 </div>
-                <div class="col-sm-3">
-                    <p class="text-muted mb-0">Runtime</p>
-                    <p class="fw-bold">@Model.Runtime min</p>
-                </div>
-                <div class="col-sm-3">
-                    <p class="text-muted mb-0">Release Date</p>
-                    <p class="fw-bold">@Model.ReleaseDate</p>
-                </div>
-                <div class="col-sm-3">
-                    <p class="text-muted mb-0">Status</p>
-                    <p class="fw-bold">@Model.Status</p>
-                </div>
-            </div>
 
-            <div class="mb-4">
-                <h2>Overview</h2>
-                <p>@Model.Overview</p>
-            </div>
-
-            @if (Model.Budget > 0 || Model.Revenue > 0)
-            {
                 <div class="row mb-4">
-                    @if (Model.Budget > 0)
-                    {
-                        <div class="col-sm-6">
-                            <h3 class="h5">Budget</h3>
-                            <p>$@Model.Budget.ToString("N0")</p>
-                        </div>
-                    }
-                    @if (Model.Revenue > 0)
-                    {
-                        <div class="col-sm-6">
-                            <h3 class="h5">Revenue</h3>
-                            <p>$@Model.Revenue.ToString("N0")</p>
-                        </div>
-                    }
+                    <div class="col-sm-3">
+                        <p class="text-muted mb-0">Rating</p>
+                        <p class="fw-bold" style="color: var(--coral);">⭐ @Model.VoteAverage.ToString("0.0")</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="text-muted mb-0">Runtime</p>
+                        <p class="fw-bold" style="color: var(--dark-blue);">@Model.Runtime min</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="text-muted mb-0">Release Date</p>
+                        <p class="fw-bold" style="color: var(--dark-blue);">@Model.ReleaseDate</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="text-muted mb-0">Status</p>
+                        <p class="fw-bold" style="color: var(--dark-blue);">@Model.Status</p>
+                    </div>
                 </div>
-            }
 
-            <a href="@Url.Action("Index")" class="btn btn-primary">
-                Back to Movies
-            </a>
+                <div class="mb-4">
+                    <h2 style="color: var(--dark-blue);">Overview</h2>
+                    <p class="text-dark">@Model.Overview</p>
+                </div>
+
+                @if (Model.Budget > 0 || Model.Revenue > 0)
+                {
+                    <div class="row mb-4">
+                        @if (Model.Budget > 0)
+                        {
+                            <div class="col-sm-6">
+                                <h3 class="h5" style="color: var(--dark-blue);">Budget</h3>
+                                <p class="text-dark">$@Model.Budget.ToString("N0")</p>
+                            </div>
+                        }
+                        @if (Model.Revenue > 0)
+                        {
+                            <div class="col-sm-6">
+                                <h3 class="h5" style="color: var(--dark-blue);">Revenue</h3>
+                                <p class="text-dark">$@Model.Revenue.ToString("N0")</p>
+                            </div>
+                        }
+                    </div>
+                }
+
+                <div>
+                    <a href="@Url.Action("Index")" class="btn btn-primary">
+                        Back to Movies
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
