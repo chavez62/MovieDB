@@ -1,10 +1,11 @@
-﻿@model MovieDB.Models.MovieResponse
+﻿@model MovieDB.Models.MoviePopular
+
 @{
-    ViewData["Title"] = "Now Playing Movies";
+    ViewData["Title"] = "Popular Movies";
 }
 
 <div class="container py-4">
-    <h1 class="text-center mb-4">Now Playing Movies</h1>
+    <h1 class="text-center mb-4">Popular Movies</h1>
 
     @if (Model == null)
     {
