@@ -23,9 +23,9 @@ body {
     color: white !important;
 }
 
-    .nav-link:hover {
-        color: var(--accent) !important;
-    }
+.nav-link:hover {
+    color: var(--accent) !important;
+}
 
 /* Button styling */
 .btn-primary {
@@ -34,12 +34,12 @@ body {
     color: var(--text-light);
 }
 
-    .btn-primary:hover {
-        background-color: var(--accent);
-        border-color: var(--accent);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
+.btn-primary:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
 
 /* Card styling */
 .card {
@@ -49,10 +49,10 @@ body {
     transition: transform 0.2s;
 }
 
-    .card:hover {
-        transform: scale(1.03);
-        box-shadow: 0 10px 20px rgba(91, 107, 183, 0.3);
-    }
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(91, 107, 183, 0.3);
+}
 
 .card-title {
     color: var(--text-light) !important;
@@ -74,13 +74,19 @@ body {
     color: var(--text-light);
 }
 
-/* Footer styling */
-.footer {
-    color: white !important;
-}
-
 /* Search button */
 .btn-outline-light:hover {
     background-color: var(--accent);
     border-color: var(--accent);
+}
+
+/* Footer styling */
+.footer {
+    color: white !important;
+    margin-top: auto;
+}
+
+.footer a:hover {
+    color: #fff !important;
+    transition: color 0.3s ease;
 }
