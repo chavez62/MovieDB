@@ -51,5 +51,6 @@ dotnet run
 - TMDB API
 - HTML/CSS
 
-![image](https://github.com/user-attachments/assets/ab21a8b4-402d-48f9-9b0e-26d4d89a1d5e)
+![image](https://github.com/user-attachments/assets/6e745dcf-3ccb-453a-8483-7d11b22dc7be)
+
 
