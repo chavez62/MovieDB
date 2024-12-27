@@ -1,0 +1,82 @@
+﻿@model MovieDB.Models.MovieResponse
+
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<div class="container py-4">
+    <h1 class="text-center mb-4">Search Results</h1>
+
+    @if (!string.IsNullOrEmpty(ViewBag.Query))
+    {
+        <h5 class="text-center mb-4 text-muted">Results for: "@ViewBag.Query"</h5>
+    }
+
+    @if (Model == null || Model.Results == null || !Model.Results.Any())
+    {
+        <div class="alert alert-info text-center">
+            No movies found matching your search.
+        </div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            @foreach (var movie in Model.Results)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow">
+                        @if (!string.IsNullOrEmpty(movie.PosterPath))
+                        {
+                            <img src="@($"https://image.tmdb.org/t/p/w500{movie.PosterPath}")"
+                                 class="card-img-top"
+                                 alt="@movie.Title"
+                                 style="height: 400px; object-fit: cover;">
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@movie.Title</h5>
+                            <div class="mb-2">
+                                @if (!string.IsNullOrEmpty(movie.ReleaseDate))
+                                {
+                                    <span class="badge bg-secondary">
+                                        @DateTime.Parse(movie.ReleaseDate).ToString("MMM dd, yyyy")
+                                    </span>
+                                }
+                                <span class="badge bg-primary">
+                                    ⭐ @movie.VoteAverage.ToString("0.0")
+                                </span>
+                            </div>
+                            <p class="card-text text-muted small" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                @movie.Overview
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0 p-3">
+                            <a href="@Url.Action("Details", new { id = movie.Id })"
+                               class="btn btn-primary w-100">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        @if (Model.TotalPages > 1)
+        {
+            <div class="d-flex justify-content-center mt-4">
+                <nav aria-label="Search results pages">
+                    <ul class="pagination">
+                        @for (int i = 1; i <= Math.Min(Model.TotalPages, 5); i++)
+                        {
+                            <li class="page-item @(i == Model.Page ? "active" : "")">
+                                <a class="page-link"
+                                   href="@Url.Action("Search", new { query = ViewBag.Query, page = i })">
+                                    @i
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        }
+    }
+</div>

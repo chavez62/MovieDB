@@ -50,5 +50,37 @@ namespace MovieDB.Controllers
                 return View("Error", ex.Message);
             }
         }
+
+        public async Task<ActionResult> Upcoming(int page = 1)
+        {
+            try
+            {
+                var movies = await _tmdbClient.GetUpcomingMoviesAsync(page: page);
+                return View(movies);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", ex.Message);
+            }
+        }
+
+        public async Task<IActionResult> Search(string query, int page = 1)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                return RedirectToAction("Index");
+            }
+
+            try
+            {
+                ViewBag.Query = query;
+                var movies = await _tmdbClient.SearchMoviesAsync(query, page: page);
+                return View(movies);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", ex.Message);
+            }
+        }
     }
 }

@@ -29,11 +29,16 @@
                             <a class="nav-link" asp-controller="Movies" asp-action="Popular">Popular</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Top Rated</a>
+                            <a class="nav-link" asp-controller="Movies" asp-action="Upcoming">Upcoming Movies</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search movies..." aria-label="Search">
+                    <form class="d-flex" asp-controller="Movies" asp-action="Search" method="get">
+                        <input class="form-control me-2"
+                               type="search"
+                               name="query"
+                               placeholder="Search movies..."
+                               aria-label="Search"
+                               required>
                         <button class="btn btn-outline-light" type="submit">Search</button>
                     </form>
                 </div>

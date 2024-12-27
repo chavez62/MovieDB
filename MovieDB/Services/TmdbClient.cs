@@ -59,5 +59,35 @@ namespace MovieDB.Services
                 PropertyNameCaseInsensitive = true
             });
         }
+
+        public async Task<MovieUpcoming> GetUpcomingMoviesAsync(string language = "en-US", int page = 1)
+        {
+                var requestUrl = $"{BaseUrl}/movie/upcoming?language={language}&page={page}";
+                
+                var response = await _httpClient.GetAsync(requestUrl);
+                response.EnsureSuccessStatusCode();
+
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonSerializer.Deserialize<MovieUpcoming>(content, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            
+            
+        }
+
+        public async Task<MovieResponse> SearchMoviesAsync(string query, string language = "en-US", int page = 1)
+        {
+            var requestUrl = $"{BaseUrl}/search/movie?query={query}&language={language}&page={page}";
+
+            var response = await _httpClient.GetAsync(requestUrl);
+            response.EnsureSuccessStatusCode();
+
+            var content = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<MovieResponse>(content, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+        }
     }
 }
